@@ -1,0 +1,81 @@
+<html>
+
+	<head>
+		<TITLE>Titulo 01</TITLE>	
+		<script>
+			function logar(){
+			var done=0;
+			var login = document.getElementById("nome")  
+			var password = document.getElementById("senha") 
+			
+			 
+
+			if (done==0) {document.getElementById('msgNome').innerHTML ="Nome não informado. Digite o nome para ter acesso."}
+            
+
+			if (done==0) {document.getElementById('msgSenha').innerHTML= "Senha não informada. Digite a senha para ter acesso."}
+			
+			  if (!login.checkValidity()) 
+			  {document.getElementById("msgAcesso").innerHTML = inpObj.validationMessage;} 
+			  else {document.getElementById("msgAcesso").innerHTML = "Acesso Autorizado";}
+			}
+
+		</script>	
+	</head>
+	<body>
+		<div id="error"></div>
+		<form method="POST" name="formAcesso" id="form">
+			<fieldset>
+				<legend> Informe os dados de login </legend>
+					<label for="name">Nome:</label>
+					<input type="text" id="nome" name="nome" maxlength=40/><label id="msgNome"></label>
+					</p>
+					<label for="senha">Senha:</label>
+					<input type="password" id="senha" name="senha" size="15" maxlength=8/><label id="msgSenha" ></label>
+					</p>
+					<input type="button" value="Entrar" onclick="logar()"/>			
+					</p>
+					</p>
+					<label id="msgAcesso"></label>
+			</fieldset>
+		</form>
+	</body>
+
+</html>
+
+
+
+
+
+
+
+
+HTML   ACIMA
+SCRIPT ABAIXO
+
+
+
+
+
+
+const Nome = document.getElementById("Nome")
+const Senha = document.getElementById("Senha")
+const form = document.getElementById("form")
+const msgSenha = document.getElementById("msgSen")
+const errorElement = document.getElementById("erro")
+
+form.addEventListener('submit', (e) => {
+let messages = []
+ if(Nome.value == '' || Nome.value == null) {messages.push('Nome não informado. Digite o nome para ter acesso.')}
+ if(Senha.value == ''|| Senha.value == null){messages.push('Senha não informada.Digite a senha para ter acesso.')}
+ if(Nome.value =='Teste' || Senha.value !='123') {messages.push('Senha inválida. A senha deve ser 123')}
+ if(Senha.value =='123') {messages.push('Acesso Autorizado')}
+ 
+ 
+ 
+ 
+ if(messages.length > 0) {
+    e.preventDefault()
+    errorElement.innerText = messages.join (', ')
+ }
+})
